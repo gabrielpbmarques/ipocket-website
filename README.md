@@ -31,6 +31,48 @@ Abra http://localhost:3000
 - Imagens reais podem substituir os mocks em `public/`
 - Integração real de backend: adaptar `app/api/encomenda/route.ts`
 
+### Emails (SendGrid)
+
+Essa base já está preparada para enviar e-mails de nova encomenda via SendGrid.
+
+1) Instale a dependência
+
+```bash
+npm install @sendgrid/mail
+```
+
+2) Configure variáveis em `.env.local`
+
+```
+SENDGRID_API_KEY=xxxx
+SENDGRID_EMAIL_DEFAULT_FROM=seuemail@dominio.com
+# Opcional: para enviar para outro destino (ex: caixa operacional)
+ENCOMENDA_EMAIL_TO=pedidos@dominio.com
+```
+
+3) Teste o endpoint localmente
+
+```bash
+curl -X POST http://localhost:3000/api/encomenda \
+	-H 'Content-Type: application/json' \
+	-d '{
+		"nome":"Maria Silva",
+		"email":"maria@example.com",
+		"whatsapp":"(11) 9 9999-9999",
+		"modelo":"curta",
+		"cor":"preto",
+		"cep":"01001-000",
+		"rua":"Rua Teste",
+		"numero":"123",
+		"bairro":"Centro",
+		"cidade":"São Paulo",
+		"estado":"SP",
+		"endereco":"Rua Teste, 123, Centro, São Paulo - SP, CEP 01001-000"
+	}'
+```
+
+Observação: se as variáveis de ambiente não estiverem definidas, o endpoint registra a encomenda no log e retorna sucesso, mas não envia e-mail.
+
 
 ## Getting Started
 
