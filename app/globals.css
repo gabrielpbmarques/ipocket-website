@@ -1,26 +1,81 @@
 @import "tailwindcss";
+@import "./styles/tokens.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-base);
+  --foreground: var(--color-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary-600);
+  --color-muted: var(--color-muted);
+  --color-surface: var(--color-surface);
+  --shadow-soft: 0 2px 10px rgba(17, 17, 17, 0.06);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-base-dark);
+    --foreground: var(--color-ink-dark);
   }
 }
 
 body {
-  background: var(--background);
+  /* Usa degradê elegante com fallback para cor base */
+  background: var(--bg-gradient, var(--background));
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa header sticky h-14 (3.5rem) para ancoragens */
+  scroll-padding-top: 3.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Utilities */
+.container-max {
+  @apply mx-auto w-full max-w-[1200px] px-6 sm:px-8;
+}
+
+.card-surface {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-lg);
+}
+
+.section-pad {
+  @apply py-12 sm:py-16;
+}
+
+.heading-hero {
+  @apply text-4xl leading-tight font-light tracking-tight sm:text-6xl;
+}
+
+.heading-section {
+  @apply text-3xl font-light tracking-tight sm:text-4xl;
+}
+
+.subtle {
+  @apply text-zinc-600 dark:text-zinc-400;
+}
+
+.muted-border {
+  @apply border border-zinc-200/70 dark:border-zinc-800/70;
+}
+

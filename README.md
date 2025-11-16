@@ -1,4 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## iPocket Brasil – Landing Page
+
+Landing page em Next.js com Tailwind CSS v4, componentes reutilizáveis e animações on-scroll para vender o produto iPocket Brasil.
+
+### Rodar localmente
+
+```bash
+npm install
+npm run dev
+```
+
+Abra http://localhost:3000
+
+### Tech stack
+- Next.js (App Router)
+- Tailwind CSS v4 (@tailwindcss/postcss)
+- Framer Motion (animações on-scroll)
+- Radix UI Accordion (FAQ)
+- Embla Carousel (depoimentos)
+- React Hook Form + Zod (formulário)
+
+### Estrutura principal
+- `app/page.tsx`: todas as seções da landing com âncoras
+- `app/api/encomenda/route.ts`: endpoint de envio do formulário (mock)
+- `app/styles/tokens.css`: tokens de design (cores, sombras, raios)
+- `components/*`: componentes reutilizáveis (Button, Section, etc.)
+- `public/mock-*.svg`: imagens mock para visual
+
+### Personalização
+- Ajuste paleta em `app/styles/tokens.css`
+- Imagens reais podem substituir os mocks em `public/`
+- Integração real de backend: adaptar `app/api/encomenda/route.ts`
+
 
 ## Getting Started
 
