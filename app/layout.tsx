@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Analytics />
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var s=localStorage.getItem('theme');var d = s? s==='dark' : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;var root=document.documentElement;d?root.classList.add('dark'):root.classList.remove('dark');}catch(e){}})();`}
         </Script>
