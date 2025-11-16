@@ -53,3 +53,14 @@
       linear-gradient(135deg, #0a0a0b 0%, #121317 55%, #181a1f 100%);
   }
 }
+
+/* Explicit dark mode via `html.dark` class (overrides media preference) */
+html.dark {
+  --color-base: #0a0a0b;
+  --color-ink: #ededee;
+  --color-muted: #0f1012;
+  --color-surface: #0d0e10;
+  --bg-gradient: radial-gradient(circle at 15% 20%, hsla(220 40% 20% / 0.55), transparent 55%),
+    radial-gradient(circle at 85% 75%, hsla(270 35% 22% / 0.5), transparent 60%),
+    linear-gradient(135deg, #0a0a0b 0%, #121317 55%, #181a1f 100%);
+}

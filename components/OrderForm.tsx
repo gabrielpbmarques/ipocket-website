@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input, Label, Select } from "@/components/ui/Input";
@@ -34,13 +34,13 @@ export function OrderForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     setValue,
-    watch,
+    control,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
-  const watchCep = watch("cep");
-  const watchWhatsapp = watch("whatsapp");
+  const watchCep = useWatch<FormValues>({ control, name: "cep" }) as string | undefined;
+  const watchWhatsapp = useWatch<FormValues>({ control, name: "whatsapp" }) as string | undefined;
 
   const formatCep = (value: string) => {
     const digits = value.replace(/\D/g, "").slice(0, 8);

@@ -20,13 +20,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-base-dark);
-    --foreground: var(--color-ink-dark);
-  }
-}
-
 body {
   /* Usa degradê elegante com fallback para cor base */
   background: var(--bg-gradient, var(--background));
