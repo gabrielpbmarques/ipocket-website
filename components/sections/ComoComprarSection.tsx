@@ -1,4 +1,3 @@
-"use client";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,9 +6,9 @@ import { AnimateInView } from "@/components/AnimateInView";
 
 export function ComoComprarSection() {
   const steps = [
-    { t: "Você escolhe modelo e cor.", d: "Alça curta ou longa, e a cor que combina com você." },
-    { t: "Preenche seus dados e endereço.", d: "Formulário simples, sem burocracia." },
-    { t: "Recebe a chave PIX.", d: "Confirmou o pagamento? Sua peça entra na fila de produção." },
+    { t: "Escolha modelo e cor.", d: "Curta ou longa, nas cores do primeiro lote." },
+    { t: "Preencha seus dados.", d: "Nome, contato e endereço — simples e direto." },
+    { t: "Pague via PIX.", d: "Após a confirmação, sua peça entra na fila de produção." },
   ];
   return (
     <Section id="como-comprar" className="bg-[--color-muted]">
@@ -25,8 +24,8 @@ export function ComoComprarSection() {
             </AnimateInView>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm subtle">Prazo estimado de produção e envio: entre 2 semanas e 1 mês.</p>
-        <p className="mt-2 text-center text-xs subtle">Cada peça é feita sob encomenda, com acabamento cuidadoso e sem desperdício.</p>
+        <p className="mt-6 text-center text-sm subtle">Prazo estimado: 2 semanas a 1 mês após confirmação do pagamento.</p>
+        <p className="mt-2 text-center text-xs subtle">Produção sob encomenda, com acabamento cuidadoso e sem desperdício.</p>
       </Container>
     </Section>
   );

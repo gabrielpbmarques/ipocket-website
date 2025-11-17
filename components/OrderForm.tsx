@@ -3,7 +3,7 @@ import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Label, Select } from "@/components/ui/Input";
+import { Input, Label, Select, Textarea } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { ColorSwatches } from "@/components/ui/ColorSwatches";
 
@@ -14,13 +14,14 @@ const schema = z.object({
   whatsapp: z.string().min(8),
   modelo: z.enum(["curta", "longa"]),
   cor: z.string().min(1),
-  cep: z.string().min(9), // 00000-000
+  cep: z.string().regex(/^\d{5}-\d{3}$/,{message:"Use o formato 00000-000"}),
   rua: z.string().min(3),
   numero: z.string().min(1),
   complemento: z.string().optional(),
   bairro: z.string().min(2),
   cidade: z.string().min(2),
   estado: z.string().min(2).max(2),
+  observacoes: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -98,7 +99,7 @@ export function OrderForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid gap-6 rounded-3xl p-6 sm:p-8 bg-white/70 backdrop-blur-sm border border-zinc-200/60 dark:bg-zinc-950/60 dark:border-zinc-800/60 shadow-sm"
+      className="grid gap-6 rounded-3xl p-6 sm:p-8 card-surface muted-border"
     >
       {/* Nome */}
       <div className="grid gap-2">
@@ -152,7 +153,7 @@ export function OrderForm() {
           }}
         />
         <div className="flex items-center gap-2 min-h-[1.25rem]">
-          {cepLoading && <p className="text-xs text-zinc-500">Buscando endereço...</p>}
+          {cepLoading && <p className="text-xs subtle">Buscando endereço...</p>}
           {cepError && <p className="text-xs text-red-600">{cepError}</p>}
         </div>
         {errors.cep && (
@@ -225,6 +226,12 @@ export function OrderForm() {
         </div>
       </div>
 
+      {/* Observações adicionais */}
+      <div className="grid gap-2">
+        <Label>Observações adicionais</Label>
+        <Textarea placeholder="Ex.: preferências de entrega, detalhes do modelo/alça, instruções de contato..." {...register("observacoes")} />
+      </div>
+
 
       {/* CTA */}
       <Button
@@ -236,10 +243,9 @@ export function OrderForm() {
       </Button>
 
       {/* Informações finais */}
-      <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-        Ao enviar, você receberá a chave PIX por WhatsApp para confirmar seu
-        pedido.  
-        <br />Prazo estimado de produção: **2 semanas a 1 mês**.
+      <p className="text-xs subtle leading-relaxed">
+        Ao enviar, você receberá a chave PIX por WhatsApp para confirmar seu pedido.
+        Produção sob encomenda, por tempo limitado. Prazo estimado: 2 semanas a 1 mês.
       </p>
     </form>
   );

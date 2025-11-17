@@ -65,7 +65,11 @@ html {
 }
 
 .subtle {
-  @apply text-zinc-600 dark:text-zinc-400;
+  @apply text-zinc-600;
+}
+
+.dark .subtle {
+  @apply text-zinc-300;
 }
 
 .muted-border {

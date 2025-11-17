@@ -11,7 +11,7 @@ export function Accordion({ className, ...props }: RadixAccordion.AccordionSingl
 export function AccordionItem({ className, ...props }: RadixAccordion.AccordionItemProps) {
   return (
     <RadixAccordion.Item
-      className={cn("rounded-[var(--radius-md)] border border-zinc-200/70 dark:border-zinc-800/70", className)}
+      className={cn("rounded-[var(--radius-md)] muted-border", className)}
       {...props}
     />
   );
@@ -25,7 +25,8 @@ export const AccordionTrigger = React.forwardRef<
     <RadixAccordion.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between gap-4 rounded-[var(--radius-md)] bg-white px-4 py-3 text-left text-base font-medium dark:bg-zinc-950 cursor-pointer",
+        "flex flex-1 items-center justify-between gap-4 rounded-[var(--radius-md)] px-4 py-3 text-left text-base font-medium cursor-pointer",
+        "bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]",
         className
       )}
       {...props}
@@ -43,10 +44,10 @@ export const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <RadixAccordion.Content
     ref={ref}
-    className={cn("overflow-hidden border-t border-zinc-200/70 dark:border-zinc-800/70", className)}
+    className={cn("overflow-hidden border-t muted-border", className)}
     {...props}
   >
-    <div className="px-4 py-4 text-zinc-600 dark:text-zinc-300">{children}</div>
+    <div className="px-4 py-4 subtle">{children}</div>
   </RadixAccordion.Content>
 ));
 AccordionContent.displayName = "AccordionContent";

@@ -50,18 +50,18 @@ export function ColorSwatches({
                     >
                         <span
                             className={cn(
-                                "dot h-8 w-8 rounded-full border border-black/10 shadow-sm ring-offset-2 transition-all duration-150",
-                                "dark:border-white/10",
+                                "dot h-8 w-8 rounded-full border shadow-sm ring-offset-2 transition-all duration-150",
+                                "border-black/10 dark:border-white/10",
                                 "group-hover:scale-105 group-hover:shadow-md",
                                 active &&
-                                "scale-110 ring-2 ring-[--color-primary-500] ring-offset-2 ring-offset-white dark:ring-offset-zinc-950",
+                                    "scale-110 ring-2 ring-[--color-primary-500] ring-offset-2 ring-offset-[--color-surface]",
                             )}
                             style={{ backgroundColor: `var(${s.colorVar})` }}
                         />
                         <span
                             className={cn(
-                                "text-[11px] text-zinc-600 dark:text-zinc-300 leading-tight",
-                                active && "font-medium text-zinc-900 dark:text-zinc-50",
+                                "text-[11px] leading-tight subtle",
+                                active && "font-medium text-[--color-ink]",
                             )}
                         >
                             {s.name}

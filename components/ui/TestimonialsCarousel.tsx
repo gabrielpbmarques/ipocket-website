@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/cn";
 
@@ -18,6 +18,11 @@ export function TestimonialsCarousel({
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const prefersReducedMotion = useMemo(
+    () => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    []
+  );
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -48,6 +53,14 @@ export function TestimonialsCarousel({
     };
   }, [emblaApi]);
 
+  useEffect(() => {
+    if (!emblaApi || paused || prefersReducedMotion) return;
+    const id = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 5000);
+    return () => clearInterval(id);
+  }, [emblaApi, paused, prefersReducedMotion]);
+
   if (!items?.length) return null;
 
   return (
@@ -60,7 +73,15 @@ export function TestimonialsCarousel({
       )}
       aria-label="Depoimentos de clientes"
     >
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div
+        className="overflow-hidden"
+        ref={emblaRef}
+        onPointerEnter={() => setPaused(true)}
+        onPointerLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        aria-roledescription="carrossel"
+      >
         <div className="-ml-4 flex">
           {items.map((t, idx) => (
             <article
@@ -69,27 +90,24 @@ export function TestimonialsCarousel({
             >
               <div
                 className={cn(
-                  "h-full rounded-2xl bg-white/80 p-8 shadow-sm backdrop-blur-sm",
-                  "dark:bg-zinc-950/80 dark:shadow-zinc-950/50",
-                  "border border-zinc-200/70 dark:border-zinc-800/70",
-                  "flex flex-col justify-between",
+                  "h-full rounded-2xl p-8 card-surface muted-border flex flex-col justify-between",
                 )}
               >
                 <div>
-                  <div className="mb-4 text-4xl leading-none text-zinc-300 dark:text-zinc-700">
+                  <div className="mb-4 text-4xl leading-none subtle">
                     “
                   </div>
-                  <p className="text-lg leading-relaxed text-zinc-800 dark:text-zinc-100">
+                  <p className="text-lg leading-relaxed text-[--color-ink]">
                     {t.quote}
                   </p>
                 </div>
 
                 <div className="mt-6 border-t border-zinc-200/70 pt-4 text-sm dark:border-zinc-800/70">
-                  <span className="font-semibold text-zinc-900 dark:text-zinc-50">
+                  <span className="font-semibold text-[--color-ink]">
                     {t.author}
                   </span>
                   {t.role ? (
-                    <span className="ml-1 text-zinc-500 dark:text-zinc-400">
+                    <span className="ml-1 subtle">
                       — {t.role}
                     </span>
                   ) : null}
@@ -109,7 +127,7 @@ export function TestimonialsCarousel({
             "pointer-events-auto inline-flex h-9 w-9 items-center justify-center cursor-pointer",
             "rounded-full border border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-sm",
             "hover:bg-white dark:border-zinc-800 dark:bg-zinc-900/70 dark:hover:bg-zinc-900",
-            "text-sm text-zinc-700 dark:text-zinc-200",
+            "text-sm text-[--color-ink]",
           )}
           aria-label="Depoimento anterior"
         >
@@ -123,7 +141,7 @@ export function TestimonialsCarousel({
             "pointer-events-auto inline-flex h-9 w-9 items-center justify-center cursor-pointer",
             "rounded-full border border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-sm",
             "hover:bg-white dark:border-zinc-800 dark:bg-zinc-900/70 dark:hover:bg-zinc-900",
-            "text-sm text-zinc-700 dark:text-zinc-200",
+            "text-sm text-[--color-ink]",
           )}
           aria-label="Próximo depoimento"
         >

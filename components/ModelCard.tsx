@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
+import { blurDataURL } from "@/lib/blur";
 
 export type ModelSwatch = {
   key: string;
@@ -40,27 +41,26 @@ export function ModelCard({
   return (
     <Card
       className={cn(
-        "relative flex flex-col gap-5 rounded-3xl border border-zinc-200/70 bg-white/80 p-6 shadow-sm backdrop-blur-sm",
-        "dark:border-zinc-800/80 dark:bg-zinc-950/80",
+        "relative flex flex-col gap-5 rounded-3xl p-6",
         compact && "p-4 gap-4",
       )}
     >
       {/* Header: título + preço */}
       <header className="flex flex-col gap-1">
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-xl">
+          <h3 className="text-lg font-semibold tracking-tight text-[--color-ink] sm:text-xl">
             {title}
           </h3>
           <span
             className={cn(
-              "inline-flex items-center rounded-full border border-zinc-200/80 bg-zinc-50/80 px-3 py-1 text-xs font-medium text-zinc-700",
-              "dark:border-zinc-800/80 dark:bg-zinc-900/80 dark:text-zinc-200",
+              "inline-flex items-center rounded-full border border-zinc-200/80 bg-zinc-50/80 px-3 py-1 text-xs font-medium text-[--color-ink]",
+              "dark:border-zinc-800/80 dark:bg-zinc-900/80",
             )}
           >
             {priceLabel}
           </span>
         </div>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+        <p className="mt-1 text-sm subtle">
           {description}
         </p>
       </header>
@@ -68,18 +68,18 @@ export function ModelCard({
       {/* Área visual principal: exibe mock ou cor selecionada */}
       <div
         className={cn(
-          "mt-1 overflow-hidden rounded-2xl border border-zinc-200/70 bg-zinc-50/80 aspect-[4/3] relative",
-          "dark:border-zinc-800/80 dark:bg-zinc-950/80",
+          "mt-1 overflow-hidden rounded-2xl aspect-[4/3] relative bg-[--color-surface] muted-border",
         )}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <motion.div
             key={displayImageSrc}
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.995 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.8, 0.25, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
             className="absolute inset-0"
+            style={{ willChange: "opacity" }}
           >
             <Image
               src={displayImageSrc}
@@ -90,6 +90,8 @@ export function ModelCard({
                 "object-cover",
               )}
               priority={false}
+              placeholder="blur"
+              blurDataURL={blurDataURL(400, 300)}
             />
           </motion.div>
         </AnimatePresence>
@@ -97,7 +99,7 @@ export function ModelCard({
 
       {/* Swatches de cor */}
       <section className="mt-4">
-        <p className="mb-3 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+        <p className="mb-3 text-sm font-medium text-[--color-ink]">
           Cores disponíveis
         </p>
         <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -126,8 +128,8 @@ export function ModelCard({
                 />
                 <span
                   className={cn(
-                    "mt-1 text-xs text-zinc-600 dark:text-zinc-300",
-                    active && "font-medium text-zinc-900 dark:text-zinc-50",
+                    "mt-1 text-xs subtle",
+                    active && "font-medium text-[--color-ink]",
                   )}
                 >
                   {s.name}
@@ -138,9 +140,9 @@ export function ModelCard({
         </div>
 
         {selectedSwatch && (
-          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="mt-3 text-xs subtle">
             Cor selecionada:{" "}
-            <span className="font-medium text-zinc-800 dark:text-zinc-200">
+            <span className="font-medium text-[--color-ink]">
               {selectedSwatch.name}
             </span>
           </p>

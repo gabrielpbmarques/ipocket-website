@@ -35,12 +35,12 @@ export function Navbar() {
     setTheme(next);
   };
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/60 bg-white/70 backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/70">
+    <header className="sticky top-0 z-50 backdrop-blur bg-[--color-surface] muted-border border-b">
       <div className="container-max flex h-14 items-center justify-between">
         <Link href="#" className="text-sm font-semibold">iPocket Brasil</Link>
-        <nav className="hidden items-center gap-3 text-sm text-zinc-700 md:flex">
+        <nav className="hidden items-center gap-3 text-sm text-[--color-ink] md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-black dark:text-zinc-300 dark:hover:text-white cursor-pointer">
+            <a key={l.href} href={l.href} className="hover:opacity-90 cursor-pointer">
               {l.label}
             </a>
           ))}
@@ -48,7 +48,7 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Alternar tema"
-            className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200/70 bg-white/70 text-zinc-700 shadow-sm backdrop-blur hover:bg-zinc-100 dark:border-zinc-800/70 dark:bg-zinc-950/70 dark:text-zinc-200 dark:hover:bg-zinc-900 cursor-pointer"
+            className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
@@ -58,24 +58,24 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Alternar tema"
-            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200/70 bg-white/70 text-zinc-700 shadow-sm backdrop-blur hover:bg-zinc-100 dark:border-zinc-800/70 dark:bg-zinc-950/70 dark:text-zinc-200 dark:hover:bg-zinc-900 cursor-pointer"
+            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="rounded-md border px-3 py-1 text-sm cursor-pointer"
+            className="rounded-md px-3 py-1 text-sm cursor-pointer muted-border bg-[--color-surface] hover:bg-[--color-muted]"
           >
             Menu
           </button>
         </div>
       </div>
       {open && (
-        <div className="border-t border-zinc-200/60 bg-white py-2 dark:border-zinc-800/60 dark:bg-zinc-950 md:hidden">
+        <div className="border-t py-2 md:hidden muted-border bg-[--color-surface]">
           <nav className="container-max grid grid-cols-2 gap-2 text-sm">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="rounded-md px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 cursor-pointer" onClick={() => setOpen(false)}>
+              <a key={l.href} href={l.href} className="rounded-md px-3 py-2 hover:bg-[--color-muted] cursor-pointer" onClick={() => setOpen(false)}>
                 {l.label}
               </a>
             ))}
