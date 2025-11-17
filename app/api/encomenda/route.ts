@@ -12,7 +12,6 @@ const EMAIL_TO = process.env.ENCOMENDA_EMAIL_TO || EMAIL_FROM;
 
 // IDs de template MailerSend
 const TEMPLATE_INTERNO_ID = "vywj2lpkvd1g7oqz"; // notificação para você
-const TEMPLATE_CLIENTE_ID = "3z0vklovn0eg7qrx"; // confirmação para o cliente
 
 interface EncomendaData {
   nome?: string;
@@ -42,14 +41,6 @@ function normalizarCor(cor?: string) {
   return cor.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
-function gerarWhatsappLink(whatsapp?: string) {
-  if (!whatsapp) return "";
-  const digits = whatsapp.replace(/\D+/g, "");
-  if (!digits) return "";
-  // Brasil: se tiver 11 dígitos já deve estar ok (DDD + 9 + número)
-  return `https://wa.me/${digits}`;
-}
-
 async function enviarEmailInterno(data: EncomendaData): Promise<void> {
   if (!MAILERSEND_API_KEY || !EMAIL_FROM || !EMAIL_TO) {
     console.warn(
@@ -69,7 +60,6 @@ async function enviarEmailInterno(data: EncomendaData): Promise<void> {
   const corSlug = normalizarCor(data.cor);
   const imageUrl = corSlug && COLOR_IMAGE_MAP[corSlug] ? COLOR_IMAGE_MAP[corSlug] : "";
   const userName = data.nome || "Cliente";
-  const whatsappLink = gerarWhatsappLink(data.whatsapp);
 
   const emailParams = new EmailParams()
     .setFrom(from)
@@ -88,7 +78,6 @@ async function enviarEmailInterno(data: EncomendaData): Promise<void> {
       data: {
         imageUrl,
         userName,
-        whatsappLink,
         modelo: data.modelo || "-",
         cor: data.cor || "-",
         recebidaEm: new Date().toLocaleString("pt-BR"),
@@ -106,66 +95,12 @@ async function enviarEmailInterno(data: EncomendaData): Promise<void> {
   }
 }
 
-async function enviarEmailCliente(data: EncomendaData) {
-  if (!MAILERSEND_API_KEY || !EMAIL_FROM || !data.email) {
-    console.warn(
-      "MailerSend não configurado para cliente. Verifique MAILERSEND_API_KEY, MAILERSEND_EMAIL_DEFAULT_FROM e se o cliente informou e-mail."
-    );
-    return;
-  }
-
-  const mailerSend = new MailerSend({ apiKey: MAILERSEND_API_KEY });
-  const assunto = "Recebemos sua encomenda iPocket Brasil";
-  const from = new Sender(EMAIL_FROM!, "iPocket Brasil");
-  const to: Recipient[] = [
-    new Recipient(data.email, data.nome || "Cliente iPocket"),
-  ];
-
-  const corSlug = normalizarCor(data.cor);
-  const imageUrl = corSlug && COLOR_IMAGE_MAP[corSlug] ? COLOR_IMAGE_MAP[corSlug] : "";
-  const userName = data.nome || "Cliente";
-  const whatsappLink = gerarWhatsappLink(data.whatsapp);
-
-  const emailParams = new EmailParams()
-    .setFrom(from)
-    .setTo(to)
-    .setSubject(assunto)
-    .setTemplateId(TEMPLATE_CLIENTE_ID)
-    .setReplyTo(from);
-
-  emailParams.setPersonalization([
-    {
-      email: data.email,
-      data: {
-        imageUrl,
-        userName,
-        whatsappLink,
-        modelo: data.modelo || "-",
-        cor: data.cor || "-",
-        recebidaEm: new Date().toLocaleString("pt-BR"),
-      },
-    },
-  ]);
-
-  try {
-    await mailerSend.email.send(emailParams);
-  } catch (error) {
-    console.error("Falha ao enviar email de confirmação ao cliente", error);
-  }
-}
-
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const data: EncomendaData = await req.json();
-    console.log("Nova encomenda:", data);
 
     // Envia e-mail interno (para você) e confirmação para o cliente
-    enviarEmailInterno(data).catch((e) =>
-      console.error("Erro envio MailerSend (interno)", e)
-    );
-    enviarEmailCliente(data).catch((e) =>
-      console.error("Erro envio MailerSend (cliente)", e)
-    );
+    enviarEmailInterno(data)
 
     return NextResponse.json({
       ok: true,

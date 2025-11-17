@@ -21,7 +21,6 @@ const schema = z.object({
   bairro: z.string().min(2),
   cidade: z.string().min(2),
   estado: z.string().min(2).max(2),
-  observacoes: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -225,13 +224,6 @@ export function OrderForm() {
           )}
         </div>
       </div>
-
-      {/* Observações adicionais */}
-      <div className="grid gap-2">
-        <Label>Observações adicionais</Label>
-        <Textarea placeholder="Ex.: preferências de entrega, detalhes do modelo/alça, instruções de contato..." {...register("observacoes")} />
-      </div>
-
 
       {/* CTA */}
       <Button

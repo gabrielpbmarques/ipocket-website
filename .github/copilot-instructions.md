@@ -364,7 +364,6 @@ Instruções para a IA:
     - [ ] Alça curta – R$ 600
     - [ ] Alça longa – R$ 1.200
   - Cor desejada (select ou buttons com swatches)
-  - Observações adicionais (campo texto livre)
 
 - Ao enviar o formulário:
   - Mostrar mensagem de confirmação:

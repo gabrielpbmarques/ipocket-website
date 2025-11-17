@@ -71,9 +71,6 @@ curl -X POST http://localhost:3000/api/encomenda \
 	}'
 ```
 
-Observação: se as variáveis de ambiente não estiverem definidas, o endpoint registra a encomenda no log e retorna sucesso, mas não envia e-mail.
-
-
 ## Getting Started
 
 First, run the development server:
