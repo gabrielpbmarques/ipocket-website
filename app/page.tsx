@@ -27,7 +27,7 @@ export default function Home() {
       {
         "@type": "Offer",
         sku: "ipocket-alca-curta",
-        price: "600",
+        price: "300",
         priceCurrency: "BRL",
         availability: "https://schema.org/PreOrder",
         url: "https://www.ipocketbrasil.com/#encomenda",
@@ -35,7 +35,7 @@ export default function Home() {
       {
         "@type": "Offer",
         sku: "ipocket-alca-longa",
-        price: "1200",
+        price: "600",
         priceCurrency: "BRL",
         availability: "https://schema.org/PreOrder",
         url: "https://www.ipocketbrasil.com/#encomenda",

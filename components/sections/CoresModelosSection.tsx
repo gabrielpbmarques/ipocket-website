@@ -12,7 +12,7 @@ export function CoresModelosSection() {
         <div className="grid gap-8 lg:grid-cols-2">
           <ModelCard
             title="Modelo Alça Curta"
-            priceLabel="R$ 600"
+            priceLabel="R$ 300"
             description="Para usar na mão ou preso à bolsa."
             imageSrc="/mock-curta.svg"
             imageAlt="Modelo alça curta"
@@ -29,7 +29,7 @@ export function CoresModelosSection() {
           />
           <ModelCard
             title="Modelo Alça Longa"
-            priceLabel="R$ 1.200"
+            priceLabel="R$ 600"
             description="Estilo tiracolo / crossbody, pra usar no corpo."
             imageSrc="/mock-longa.svg"
             imageAlt="Modelo alça longa"
