@@ -20,18 +20,49 @@ export function Navbar() {
   const [theme, setTheme] = React.useState<"light" | "dark" | null>("light");
 
   React.useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    try {
+      const stored = localStorage.getItem("theme");
+      const root = document.documentElement;
+      if (stored === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+        setTheme("dark");
+        return;
+      }
+      if (stored === "light") {
+        root.classList.add("light");
+        root.classList.remove("dark");
+        setTheme("light");
+        return;
+      }
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (prefersDark) {
+        root.classList.add("dark");
+        root.classList.remove("light");
+        setTheme("dark");
+      } else {
+        root.classList.add("light");
+        root.classList.remove("dark");
+        setTheme("light");
+      }
+    } catch {
+      // fallback
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    }
   }, []);
 
   const toggleTheme = () => {
+    if (!theme) return;
     const root = document.documentElement;
     const next = theme === "dark" ? "light" : "dark";
-    if (next === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    try {
-      localStorage.setItem("theme", next);
-    } catch {}
+    if (next === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    }
+    try { localStorage.setItem("theme", next); } catch {}
     setTheme(next);
   };
   return (

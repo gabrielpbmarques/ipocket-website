@@ -84,7 +84,7 @@ export default function RootLayout({
           id="theme-init"
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var s=localStorage.getItem('theme');var d = s? s==='dark' : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;var root=document.documentElement;d?root.classList.add('dark'):root.classList.remove('dark');}catch(e){}})();",
+              "(function(){try{var s=localStorage.getItem('theme');var root=document.documentElement;var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; if(s==='dark'){root.classList.add('dark');root.classList.remove('light');} else if(s==='light'){root.classList.add('light');root.classList.remove('dark');} else { if(prefersDark){root.classList.add('dark');root.classList.remove('light');} else {root.classList.add('light');root.classList.remove('dark');} } }catch(e){}})();",
           }}
         />
       </head>

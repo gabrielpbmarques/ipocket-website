@@ -64,3 +64,14 @@ html.dark {
     radial-gradient(circle at 85% 75%, hsla(270 35% 22% / 0.5), transparent 60%),
     linear-gradient(135deg, #0a0a0b 0%, #121317 55%, #181a1f 100%);
 }
+
+/* Explicit light mode to override dark media query when system prefers dark */
+html.light {
+  --color-base: #ffffff;
+  --color-ink: #0b0b0d;
+  --color-muted: #f6f6f7;
+  --color-surface: #ffffff;
+  --bg-gradient: radial-gradient(circle at 20% 25%, hsla(220 90% 98% / 0.9), transparent 60%),
+    radial-gradient(circle at 80% 70%, hsla(270 85% 96% / 0.85), transparent 62%),
+    linear-gradient(135deg, #ffffff 0%, #f5f7fa 45%, #eef1f5 100%);
+}

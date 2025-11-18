@@ -291,35 +291,46 @@ export function StripeOrderForm() {
     if (typeof window === "undefined") return null;
     const root = document.documentElement;
     const css = getComputedStyle(root);
-    const bg = "#ffffff";
-    const text = "#111827";
+    const isDark = root.classList.contains("dark");
+    const surface = css.getPropertyValue("--color-surface").trim() || (isDark ? "#0d0e10" : "#ffffff");
+    const ink = css.getPropertyValue("--color-ink").trim() || (isDark ? "#ededee" : "#0b0b0d");
     const radius = css.getPropertyValue("--radius-md").trim() || "12px";
-    const secondary = "#6b7280";
+    const placeholder = "#6b7280"; // zinc-500
+    const inputBorder = "#d4d4d8"; // zinc-300
 
     return {
       theme: "flat" as const,
       variables: {
-        colorPrimary: text,
-        colorBackground: bg,
-        color: localStorage.getItem("theme") === "dark" ? "#ffffff" : "#111827",
-        colorTextSecondary: secondary,
-        colorTextPlaceholder: secondary,
+        colorPrimary: ink,
+        colorBackground: surface,
+        colorText: ink,
+        colorTextSecondary: placeholder,
+        colorTextPlaceholder: placeholder,
         borderRadius: radius,
         spacingUnit: "6px",
       },
       rules: {
         ".Label": {
-          color: localStorage.getItem("theme") === "dark" ? "#ffffff" : "#111827",
-          fontWeight: "500"
+          color: isDark ? "#f4f4f5" : "#111827",
+          fontWeight: "500",
         },
         ".Input": {
-          color: text,
-          border: "1px solid var(--color-border-subtle)",
-          backgroundColor: "#ffffff"
+          color: "#111827",
+          backgroundColor: "#ffffff",
+          border: `1px solid ${inputBorder}`,
+          boxShadow: "none",
         },
-        ".Input::placeholder": { color: secondary },
+        ".Input::placeholder": { color: placeholder },
+        ".Input:focus": {
+          border: "1px solid #000000",
+          boxShadow: "0 0 0 2px #000000",
+        },
         ".Error": { color: "#ef4444" },
-        ".Tab, .Block": { borderRadius: radius },
+        ".Tab, .Block": {
+          borderRadius: radius,
+          backgroundColor: isDark ? surface : "#ffffff",
+          border: `1px solid ${inputBorder}`,
+        },
       },
     };
   }, []);
