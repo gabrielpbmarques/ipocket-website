@@ -48,7 +48,7 @@ export function Modal({ open, title, children, onClose, className }: ModalProps)
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-sm font-medium bg-[--color-base] hover:bg-[--color-base-hover] transition-colors border border-[--color-border-subtle]"
+            className="px-4 py-2 rounded-xl text-sm font-medium bg-[var(--color-surface)] text-[var(--color-ink)] hover:bg-[var(--color-muted)] transition-colors muted-border"
           >
             Fechar
           </button>

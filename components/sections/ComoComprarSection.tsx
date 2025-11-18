@@ -11,7 +11,7 @@ export function ComoComprarSection() {
     { t: "Pague via PIX.", d: "Após a confirmação, sua peça entra na fila de produção." },
   ];
   return (
-    <Section id="como-comprar" className="bg-[--color-muted]">
+    <Section id="como-comprar" className="bg-[var(--color-muted)]">
       <Container>
         <SectionHeading title="Como funciona a sua encomenda." />
         <div className="grid auto-rows-fr gap-6 md:grid-cols-3">

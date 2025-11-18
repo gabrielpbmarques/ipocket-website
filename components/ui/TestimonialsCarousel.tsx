@@ -97,13 +97,13 @@ export function TestimonialsCarousel({
                   <div className="mb-4 text-4xl leading-none subtle">
                     “
                   </div>
-                  <p className="text-lg leading-relaxed text-[--color-ink]">
+                  <p className="text-lg leading-relaxed text-[var(--color-ink)]">
                     {t.quote}
                   </p>
                 </div>
 
                 <div className="mt-6 border-t border-zinc-200/70 pt-4 text-sm dark:border-zinc-800/70">
-                  <span className="font-semibold text-[--color-ink]">
+                  <span className="font-semibold text-[var(--color-ink)]">
                     {t.author}
                   </span>
                   {t.role ? (
@@ -127,7 +127,7 @@ export function TestimonialsCarousel({
             "pointer-events-auto inline-flex h-9 w-9 items-center justify-center cursor-pointer",
             "rounded-full border border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-sm",
             "hover:bg-white dark:border-zinc-800 dark:bg-zinc-900/70 dark:hover:bg-zinc-900",
-            "text-sm text-[--color-ink]",
+            "text-sm text-[var(--color-ink)]",
           )}
           aria-label="Depoimento anterior"
         >
@@ -141,7 +141,7 @@ export function TestimonialsCarousel({
             "pointer-events-auto inline-flex h-9 w-9 items-center justify-center cursor-pointer",
             "rounded-full border border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-sm",
             "hover:bg-white dark:border-zinc-800 dark:bg-zinc-900/70 dark:hover:bg-zinc-900",
-            "text-sm text-[--color-ink]",
+            "text-sm text-[var(--color-ink)]",
           )}
           aria-label="Próximo depoimento"
         >
@@ -162,7 +162,7 @@ export function TestimonialsCarousel({
               className={cn(
                 "h-2 w-2 rounded-full transition-all cursor-pointer",
                 isActive
-                  ? "w-5 bg-zinc-900 dark:bg-zinc-100"
+                  ? "w-5 bg-[var(--color-ink)]"
                   : "bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600",
               )}
             />

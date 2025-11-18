@@ -30,7 +30,7 @@ export function HeroSection() {
         </div>
         </AnimateInView>
         <AnimateInView delay={0.05}>
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] bg-[--color-surface] muted-border">
+        <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-surface)] muted-border">
           <Image
             src="/mock-hero.png"
             alt="iPocket Brasil com iPhone"

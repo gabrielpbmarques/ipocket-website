@@ -11,9 +11,9 @@ const buttonVariants = cva(
         primary:
           "bg-[var(--color-primary-600)] text-white hover:bg-[var(--color-primary-700)] focus-visible:ring-[var(--color-primary-400)]",
         outline:
-          "muted-border bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]",
+          "muted-border bg-[var(--color-surface)] text-[var(--color-ink)] hover:bg-[var(--color-muted)]",
         ghost:
-          "text-[--color-ink] hover:bg-[--color-muted]",
+          "text-[var(--color-ink)] hover:bg-[var(--color-muted)]",
       },
       size: {
         sm: "h-9 px-4",

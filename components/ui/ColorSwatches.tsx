@@ -42,8 +42,8 @@ export function ColorSwatches({
             onClick={() => onSelect?.(s.key)}
             className={cn(
               "group flex cursor-pointer flex-col items-center gap-1.5",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-primary-400]",
-              "focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-400)]",
+              "focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950",
             )}
             role="radio"
             aria-checked={active}
@@ -52,17 +52,17 @@ export function ColorSwatches({
             <span
               className={cn(
                 "h-8 w-8 rounded-full border shadow-sm ring-offset-2 transition-all duration-150",
-                "border-zinc-800 dark:border-zinc-700",
+                "border-black/10 dark:border-white/10",
                 "group-hover:scale-105 group-hover:shadow-md",
                 active &&
-                  "scale-110 ring-2 ring-[--color-primary-500] ring-offset-2 ring-offset-zinc-950",
+                  "scale-110 ring-2 ring-[var(--color-primary-600)] ring-offset-2 ring-offset-white dark:ring-offset-zinc-950",
               )}
               style={{ backgroundColor: `var(${s.colorVar})` }}
             />
             <span
               className={cn(
-                "text-[11px] leading-tight text-zinc-400",
-                active && "font-medium text-zinc-50",
+                "text-[11px] leading-tight subtle",
+                active && "font-medium text-[var(--color-ink)]",
               )}
             >
               {s.name}

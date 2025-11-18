@@ -244,11 +244,11 @@ Elementos:
     - **Alça longa** – estilo tiracolo / crossbody, pra usar no corpo.
 - Tabelas ou cards:
 
-  - **Modelo Alça Curta – R$ 300**
+  - **Modelo Alça Curta – R$ 299,90**
     - Mostrar grid com cores disponíveis (inspiradas em: limão, tangerina, roxo, rosa, pavão, safira, canela, preto).
     - Cada cor com um pequeno círculo (swatch) e nome.
 
-  - **Modelo Alça Longa – R$ 600**
+  - **Modelo Alça Longa – R$ 599,90**
     - Grid com 3 cores principais (ex.: safira, canela, preto).
     - Também com swatches.
 
@@ -275,8 +275,8 @@ Elementos:
 
   - Coluna 2 – “iPocket Brasil”
     - “Versão inspirada, feita no Brasil.”
-    - “Alça curta: R$ 300.”
-    - “Alça longa: R$ 600.”
+    - “Alça curta: R$ 299,90.”
+    - “Alça longa: R$ 599,90.”
     - “Pagamento via PIX, sem IOF e sem surpresa na fatura.”
 
 - Gatilho:
@@ -361,8 +361,8 @@ Instruções para a IA:
   - WhatsApp
   - Endereço completo (rua, número, complemento, bairro, cidade, estado, CEP)
   - Modelo:
-    - [ ] Alça curta – R$ 300
-    - [ ] Alça longa – R$ 600
+    - [ ] Alça curta – R$ 299,90
+    - [ ] Alça longa – R$ 599,90
   - Cor desejada (select ou buttons com swatches)
 
 - Ao enviar o formulário:

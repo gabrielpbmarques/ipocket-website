@@ -8,7 +8,7 @@ export const Label = ({
   <label
     className={cn(
       "mb-1 block text-sm font-medium tracking-tight",
-      "text-zinc-100", // labels claras pro fundo escuro do card
+      "text-[var(--color-ink)]", // usa token para contrastar em claro/escuro
       className,
     )}
     {...props}

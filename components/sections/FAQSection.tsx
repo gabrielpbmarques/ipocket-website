@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export function FAQSection() {
   return (
-    <Section id="faq" className="bg-[--color-muted]">
+    <Section id="faq" className="bg-[var(--color-muted)]">
       <Container>
         <SectionHeading title="FAQ" />
         <div className="grid gap-4">

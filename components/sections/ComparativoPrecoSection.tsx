@@ -26,8 +26,8 @@ export function ComparativoPrecoSection() {
               <h3 className="text-lg font-medium">iPocket Brasil</h3>
               <ul className="mt-3 space-y-2 subtle">
                 <li>• Versão inspirada, feita no Brasil.</li>
-                <li>• Alça curta: R$ 300.</li>
-                <li>• Alça longa: R$ 600.</li>
+                <li>• Alça curta: R$ 299,90.</li>
+                <li>• Alça longa: R$ 599,90.</li>
                 <li>• Pagamento via PIX, sem IOF e sem surpresa na fatura.</li>
               </ul>
             </Card>

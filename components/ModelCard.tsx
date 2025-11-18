@@ -48,12 +48,14 @@ export function ModelCard({
       {/* Header: título + preço */}
       <header className="flex flex-col gap-1">
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-lg font-semibold tracking-tight text-[--color-ink] sm:text-xl">
+          <h3 className="text-lg font-semibold tracking-tight text-[var(--color-ink)] sm:text-xl">
             {title}
           </h3>
           <span
             className={cn(
-              "inline-flex items-center rounded-full border border-zinc-200/80 bg-zinc-50/80 px-3 py-1 text-xs font-medium text-[--color-ink]",
+              "inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium",
+              // Claro: fundo claro translúcido; Escuro: fundo escuro translúcido
+              "border-zinc-200/80 bg-white/80 text-[var(--color-ink)]",
               "dark:border-zinc-800/80 dark:bg-zinc-900/80",
             )}
           >
@@ -68,7 +70,7 @@ export function ModelCard({
       {/* Área visual principal: exibe mock ou cor selecionada */}
       <div
         className={cn(
-          "mt-1 overflow-hidden rounded-2xl aspect-[4/3] relative bg-[--color-surface] muted-border",
+          "mt-1 overflow-hidden rounded-2xl aspect-[4/3] relative bg-[var(--color-surface)] muted-border",
         )}
       >
         <AnimatePresence mode="sync">
@@ -99,7 +101,7 @@ export function ModelCard({
 
       {/* Swatches de cor */}
       <section className="mt-4">
-        <p className="mb-3 text-sm font-medium text-[--color-ink]">
+        <p className="mb-3 text-sm font-medium text-[var(--color-ink)]">
           Cores disponíveis
         </p>
         <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -114,7 +116,7 @@ export function ModelCard({
                 aria-label={`Selecionar cor ${s.name}`}
                 className={cn(
                   "group relative flex flex-col items-center cursor-pointer",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-primary-400] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-400)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950",
                 )}
               >
                 <span
@@ -122,14 +124,14 @@ export function ModelCard({
                     "h-8 w-8 rounded-full border border-black/10 shadow-sm transition-all dark:border-white/10",
                     "group-hover:scale-105 group-hover:shadow-md",
                     active &&
-                      "scale-110 ring-2 ring-[--color-primary-600] ring-offset-2 ring-offset-white dark:ring-offset-zinc-950",
+                      "scale-110 ring-2 ring-[var(--color-primary-600)] ring-offset-2 ring-offset-white dark:ring-offset-zinc-950",
                   )}
                   style={{ backgroundColor: `var(${s.var})` }}
                 />
                 <span
                   className={cn(
                     "mt-1 text-xs subtle",
-                    active && "font-medium text-[--color-ink]",
+                    active && "font-medium text-[var(--color-ink)]",
                   )}
                 >
                   {s.name}
@@ -142,7 +144,7 @@ export function ModelCard({
         {selectedSwatch && (
           <p className="mt-3 text-xs subtle">
             Cor selecionada:{" "}
-            <span className="font-medium text-[--color-ink]">
+            <span className="font-medium text-[var(--color-ink)]">
               {selectedSwatch.name}
             </span>
           </p>

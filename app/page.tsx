@@ -27,7 +27,7 @@ export default function Home() {
       {
         "@type": "Offer",
         sku: "ipocket-alca-curta",
-        price: "300",
+        price: "299,90",
         priceCurrency: "BRL",
         availability: "https://schema.org/PreOrder",
         url: "https://www.ipocketbrasil.com/#encomenda",
@@ -35,7 +35,7 @@ export default function Home() {
       {
         "@type": "Offer",
         sku: "ipocket-alca-longa",
-        price: "600",
+        price: "599,90",
         priceCurrency: "BRL",
         availability: "https://schema.org/PreOrder",
         url: "https://www.ipocketbrasil.com/#encomenda",
@@ -134,7 +134,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
-      <main className="bg-[--color-base] text-[--color-ink]">
+      <main className="bg-[var(--color-base)] text-[var(--color-ink)]">
       <HeroSection />
       <ComoFuncionaSection />
       <PorqueAgoraSection />

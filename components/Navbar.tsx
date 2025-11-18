@@ -66,10 +66,10 @@ export function Navbar() {
     setTheme(next);
   };
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-[--color-surface] muted-border border-b">
+    <header className="sticky top-0 z-50 backdrop-blur bg-[var(--color-surface)] muted-border border-b">
       <div className="container-max flex h-14 items-center justify-between">
         <Link href="#" className="text-sm font-semibold">iPocket Brasil</Link>
-        <nav className="hidden items-center gap-3 text-sm text-[--color-ink] md:flex">
+        <nav className="hidden items-center gap-3 text-sm text-[var(--color-ink)] md:flex">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="hover:opacity-90 cursor-pointer">
               {l.label}
@@ -79,7 +79,7 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Alternar tema"
-            className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]"
+            className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[var(--color-surface)] text-[var(--color-ink)] hover:bg-[var(--color-muted)]"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
@@ -89,24 +89,24 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Alternar tema"
-            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[--color-surface] text-[--color-ink] hover:bg-[--color-muted]"
+            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm backdrop-blur cursor-pointer muted-border bg-[var(--color-surface)] text-[var(--color-ink)] hover:bg-[var(--color-muted)]"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="rounded-md px-3 py-1 text-sm cursor-pointer muted-border bg-[--color-surface] hover:bg-[--color-muted]"
+            className="rounded-md px-3 py-1 text-sm cursor-pointer muted-border bg-[var(--color-surface)] hover:bg-[var(--color-muted)]"
           >
             Menu
           </button>
         </div>
       </div>
       {open && (
-        <div className="border-t py-2 md:hidden muted-border bg-[--color-surface]">
+        <div className="border-t py-2 md:hidden muted-border bg-[var(--color-surface)]">
           <nav className="container-max grid grid-cols-2 gap-2 text-sm">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="rounded-md px-3 py-2 hover:bg-[--color-muted] cursor-pointer" onClick={() => setOpen(false)}>
+              <a key={l.href} href={l.href} className="rounded-md px-3 py-2 hover:bg-[var(--color-muted)] cursor-pointer" onClick={() => setOpen(false)}>
                 {l.label}
               </a>
             ))}

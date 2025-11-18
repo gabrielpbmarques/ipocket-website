@@ -5,7 +5,7 @@ import { AnimateInView } from "@/components/AnimateInView";
 
 export function PorqueAgoraSection() {
   return (
-    <Section id="porque-agora" className="bg-[--color-muted]">
+    <Section id="porque-agora" className="bg-[var(--color-muted)]">
       <Container>
         <SectionHeading title="O acessório que acabou de chegar ao mundo, agora na sua mão." />
         <div className="grid auto-rows-fr gap-8 lg:grid-cols-2">

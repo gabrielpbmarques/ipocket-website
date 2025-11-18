@@ -6,13 +6,13 @@ import { ModelCard } from "@/components/ModelCard";
 
 export function CoresModelosSection() {
   return (
-    <Section id="cores" className="bg-[--color-muted]">
+    <Section id="cores" className="bg-[var(--color-muted)]">
       <Container>
         <SectionHeading title="Escolha como você quer usar" />
         <div className="grid gap-8 lg:grid-cols-2">
           <ModelCard
             title="Modelo Alça Curta"
-            priceLabel="R$ 300"
+            priceLabel="R$ 299,90"
             description="Para usar na mão ou preso à bolsa."
             imageSrc="/mock-curta.svg"
             imageAlt="Modelo alça curta"
@@ -29,7 +29,7 @@ export function CoresModelosSection() {
           />
           <ModelCard
             title="Modelo Alça Longa"
-            priceLabel="R$ 600"
+            priceLabel="R$ 599,90"
             description="Estilo tiracolo / crossbody, pra usar no corpo."
             imageSrc="/mock-longa.svg"
             imageAlt="Modelo alça longa"

@@ -10,6 +10,17 @@ export function DesignMateriaisSection() {
       <Container>
         <SectionHeading title="Tecido tecnológico, pensado para o dia a dia." />
         <div className="grid gap-8 lg:grid-cols-2">
+          <AnimateInView delay={0.05}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-surface)] muted-border mx-auto lg:ml-auto lg:max-w-[420px]">
+              <Image
+                src="/mock-material.png"
+                alt="Tecido 3D"
+                fill
+                sizes="(min-width: 1024px) 420px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </AnimateInView>
           <AnimateInView>
             <div>
               <p className="text-lg subtle">
@@ -20,17 +31,6 @@ export function DesignMateriaisSection() {
                 <li>• Textura que cria um visual marcante, sem ser chamativo demais.</li>
                 <li>• Leve e confortável para uso no dia a dia.</li>
               </ul>
-            </div>
-          </AnimateInView>
-          <AnimateInView delay={0.05}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-lg)] bg-[--color-surface] muted-border">
-              <Image
-                src="/mock-material.png"
-                alt="Tecido 3D"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
             </div>
           </AnimateInView>
         </div>
