@@ -7,12 +7,25 @@ export const Label = ({
 }: React.LabelHTMLAttributes<HTMLLabelElement>) => (
   <label
     className={cn(
-      "mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300 tracking-tight",
+      "mb-1 block text-sm font-medium tracking-tight",
+      "text-zinc-100", // labels claras pro fundo escuro do card
       className,
     )}
     {...props}
   />
 );
+
+// base igual pro input / textarea / select
+const baseFieldClasses =
+  // altura próxima do Stripe (48px) e largura total
+  "h-16 w-full rounded-xl border px-3 text-[15px] shadow-sm " +
+  // fundo branco, independente do tema, pra ficar igual aos campos do Stripe
+  "border-zinc-300 bg-white text-zinc-900 " +
+  "placeholder:text-zinc-500 " +
+  // foco com borda preta igual vibe do Stripe flat
+  "transition-all duration-200 " +
+  "focus:border-black focus:outline-none " +
+  "focus:ring-2 focus:ring-black focus:ring-offset-1 focus:ring-offset-zinc-950";
 
 export const Input = React.forwardRef<
   HTMLInputElement,
@@ -20,13 +33,7 @@ export const Input = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <input
     ref={ref}
-    className={cn(
-      "h-11 w-full rounded-xl px-3 text-[15px] transition-all duration-200",
-      "muted-border bg-[--color-surface] text-[--color-ink]",
-      "placeholder:text-zinc-400",
-      "focus:border-[--color-primary-400] focus:ring-2 focus:ring-[--color-primary-400] focus:ring-offset-1",
-      className,
-    )}
+    className={cn(baseFieldClasses, className)}
     {...props}
   />
 ));
@@ -39,10 +46,8 @@ export const Textarea = React.forwardRef<
   <textarea
     ref={ref}
     className={cn(
-      "w-full rounded-xl px-3 py-2 text-[15px] transition-all duration-200",
-      "muted-border bg-[--color-surface] text-[--color-ink]",
-      "placeholder:text-zinc-400",
-      "focus:border-[--color-primary-400] focus:ring-2 focus:ring-[--color-primary-400] focus:ring-offset-1",
+      baseFieldClasses,
+      "h-auto min-h-[96px] py-2", // textarea mais alto
       className,
     )}
     {...props}
@@ -57,9 +62,8 @@ export const Select = ({
 }: React.SelectHTMLAttributes<HTMLSelectElement>) => (
   <select
     className={cn(
-      "h-11 w-full appearance-none rounded-xl px-3 text-[15px] transition-all duration-200 cursor-pointer",
-      "muted-border bg-[--color-surface] text-[--color-ink]",
-      "focus:border-[--color-primary-400] focus:ring-2 focus:ring-[--color-primary-400] focus:ring-offset-1",
+      baseFieldClasses,
+      "appearance-none cursor-pointer", // look mais “select” padrão
       className,
     )}
     {...props}

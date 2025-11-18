@@ -2,7 +2,7 @@
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { OrderForm } from "@/components/OrderForm";
+import { StripeOrderForm } from "@/components/StripeOrderForm";
 import { AnimateInView } from "@/components/AnimateInView";
 
 export function EncomendaSection() {
@@ -16,7 +16,7 @@ export function EncomendaSection() {
           />
         </AnimateInView>
         <AnimateInView delay={0.05}>
-          <OrderForm />
+          <StripeOrderForm />
         </AnimateInView>
       </Container>
     </Section>

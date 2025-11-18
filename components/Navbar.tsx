@@ -17,7 +17,7 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const [theme, setTheme] = React.useState<"light" | "dark" | null>(null);
+  const [theme, setTheme] = React.useState<"light" | "dark" | null>("light");
 
   React.useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
