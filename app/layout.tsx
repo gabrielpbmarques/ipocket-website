@@ -16,13 +16,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ipocketbrasil.com"),
-  title: "iPocket Brasil – Seu iPhone, seu bolso de design.",
+  title: "iPocket Brasil | O seu iPhone Pocket com Design Exclusivo",
   description:
-    "Bolso em tecido 3D inspirado no iPhone Pocket, feito no Brasil, compatível com qualquer iPhone. Encomende o seu com pagamento via PIX.",
+    "Transforme seu estilo com o iPocket Brasil. A bolsa para iPhone (Pocket iPhone) perfeita, compatível com todos os modelos. Encomende sua Pocket Bag agora!",
+  keywords: [
+    "iphone pocket",
+    "pocket iphone",
+    "ipocket",
+    "ipocket brasil",
+    "bolsa para celular",
+    "bag iphone",
+    "capa com bolso iphone",
+    "acessorio iphone",
+    "iphone case bag",
+    "bolsa iphone",
+    "case iphone com alça",
+  ],
   openGraph: {
-    title: "iPocket Brasil – Seu iPhone, seu bolso de design.",
+    title: "iPocket Brasil | O seu iPhone Pocket com Design Exclusivo",
     description:
-      "Bolso em tecido 3D inspirado no iPhone Pocket, feito no Brasil, compatível com qualquer iPhone. Encomende o seu com pagamento via PIX.",
+      "Transforme seu estilo com o iPocket Brasil. A bolsa para iPhone (Pocket iPhone) perfeita, compatível com todos os modelos. Encomende sua Pocket Bag agora!",
     url: "https://www.ipocketbrasil.com/",
     siteName: "iPocket Brasil",
     images: [
@@ -30,7 +43,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "iPocket Brasil",
+        alt: "iPocket Brasil - Pocket iPhone Bag",
       },
     ],
     locale: "pt_BR",
@@ -54,9 +67,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@ipocketbrasil",
-    title: "iPocket Brasil – Seu iPhone, seu bolso de design.",
+    title: "iPocket Brasil | O seu iPhone Pocket com Design Exclusivo",
     description:
-      "Bolso em tecido 3D inspirado no iPhone Pocket, feito no Brasil, compatível com qualquer iPhone. Encomende o seu com pagamento via PIX.",
+      "Transforme seu estilo com o iPocket Brasil. A bolsa para iPhone (Pocket iPhone) perfeita, compatível com todos os modelos. Encomende sua Pocket Bag agora!",
     images: ["/opengraph-image"],
   },
   icons: {

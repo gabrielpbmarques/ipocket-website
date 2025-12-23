@@ -11,7 +11,7 @@ export function PorqueAgoraSection() {
         <div className="grid auto-rows-fr gap-8 lg:grid-cols-2">
           <AnimateInView>
             <p className="text-lg subtle">
-              Lá fora, o iPhone Pocket chegou como um acessório de moda tech e já está esgotando em várias lojas. Aqui no Brasil, o iPocket Brasil traz a mesma ideia: transformar o seu iPhone em parte do seu look — com preço em real e fabricação local.
+              Lá fora, o iPhone Pocket chegou como um acessório de moda tech e já está esgotando em várias lojas. Aqui no Brasil, o iPocket – sua Pocket iPhone Bag – traz a mesma ideia: transformar o seu iPhone em parte do seu look — com preço em real e fabricação local.
             </p>
           </AnimateInView>
           <AnimateInView delay={0.05}>

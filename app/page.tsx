@@ -14,9 +14,9 @@ export default function Home() {
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "iPocket Brasil",
+    name: "iPocket Brasil - A sua Pocket iPhone Bag",
     description:
-      "Bolso em tecido 3D inspirado no iPhone Pocket, feito no Brasil, compatível com qualquer iPhone.",
+      "Bolso em tecido 3D inspirado no iPhone Pocket, feito no Brasil. A bag perfeita para seu iPhone, compatível com qualquer modelo.",
     brand: {
       "@type": "Brand",
       name: "iPocket Brasil",
@@ -53,7 +53,7 @@ export default function Home() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Não. É um produto nacional inspirado na tendência do iPhone Pocket, sem vínculo com Apple ou ISSEY MIYAKE.",
+            "Não. É um produto nacional inspirado na tendência do iPhone Pocket (Pocket iPhone), sem vínculo com Apple ou ISSEY MIYAKE. É uma bag para iPhone exclusiva.",
         },
       },
       {
@@ -135,17 +135,17 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
       <main className="bg-[var(--color-base)] text-[var(--color-ink)]">
-      <HeroSection />
-      <ComoFuncionaSection />
-      <PorqueAgoraSection />
-      <DesignMateriaisSection />
-      <CoresModelosSection />
-      <ComparativoPrecoSection />
-      <ComoComprarSection />
-      <DepoimentosSection />
-      <FAQSection />
-      <EncomendaSection />
-      <FooterSection />
+        <HeroSection />
+        <ComoFuncionaSection />
+        <PorqueAgoraSection />
+        <DesignMateriaisSection />
+        <CoresModelosSection />
+        <ComparativoPrecoSection />
+        <ComoComprarSection />
+        <DepoimentosSection />
+        <FAQSection />
+        <EncomendaSection />
+        <FooterSection />
       </main>
     </>
   );

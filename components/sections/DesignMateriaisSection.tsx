@@ -14,7 +14,7 @@ export function DesignMateriaisSection() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-surface)] muted-border mx-auto lg:ml-auto lg:max-w-[420px]">
               <Image
                 src="/mock-material.png"
-                alt="Tecido 3D"
+                alt="Tecido 3D para Pocket iPhone Bag"
                 fill
                 sizes="(min-width: 1024px) 420px, 100vw"
                 className="object-cover"

@@ -16,7 +16,7 @@ export function ComoFuncionaSection() {
       <Container>
         <SectionHeading
           title="Um bolso extra para o seu iPhone"
-          subtitle="O iPocket Brasil é um bolso em tecido 3D elástico que envolve o seu iPhone e se adapta também a cartões, chaves e pequenos itens do dia a dia."
+          subtitle="O iPocket Brasil é um bolso (tipo pocket bag) em tecido 3D elástico que envolve o seu iPhone e se adapta também a cartões, chaves e pequenos itens do dia a dia."
         />
         <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((c, i) => (
